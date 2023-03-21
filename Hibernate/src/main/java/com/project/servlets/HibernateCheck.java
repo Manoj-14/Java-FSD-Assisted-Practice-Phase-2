@@ -29,13 +29,6 @@ public class HibernateCheck extends HttpServlet {
 		Eproduct product = new Eproduct("Laptop",120000);
 		session.save(product);
 		session.getTransaction().commit();
-		
-//		List<Eproduct> products = session.createQuery("from eproduct").list();
-//		
-//		for(Eproduct product:products) {
-//			System.out.println("Name: "+product.getName()+"|"+"Price: "+product.getPrice());
-//		}
-//		
 		session.close();
 	}
 
