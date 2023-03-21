@@ -11,6 +11,7 @@
 
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
+		<mapping resource="com/project/domines/Product.hbm.xml" />
 
 	</session-factory>
 

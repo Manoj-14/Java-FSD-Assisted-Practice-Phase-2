@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
 
+import com.project.domines.Eproduct;
 import com.project.utils.HibernateUtil;
+
+import java.util.List;
 
 
 @WebServlet("/HibernateCheck")
@@ -22,9 +25,18 @@ public class HibernateCheck extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		PrintWriter out = response.getWriter();
-		out.println("Session Opened");
+		session.beginTransaction();
+		Eproduct product = new Eproduct("Laptop",120000);
+		session.save(product);
+		session.getTransaction().commit();
+		
+//		List<Eproduct> products = session.createQuery("from eproduct").list();
+//		
+//		for(Eproduct product:products) {
+//			System.out.println("Name: "+product.getName()+"|"+"Price: "+product.getPrice());
+//		}
+//		
 		session.close();
-		out.println("Session Closed");
 	}
 
 
